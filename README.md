@@ -2,7 +2,7 @@
 
 ## Installation Instructions
 
-1. Download plugin from [here].(https://github.com/Sarathlal/woodiscount/archive/master.zip)
+1. Download plugin from [here](https://github.com/Sarathlal/woodiscount/archive/master.zip).
 2. Upload to Plugin folder
 3. Activate plugin
 4. Go to settings >> Discount Settings
