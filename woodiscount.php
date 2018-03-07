@@ -58,22 +58,28 @@
 		function apply_discount() {
 			global $woocommerce;
 			$cartitems = $woocommerce->cart->get_cart();
-			$discountable_product = get_option('woo_products');
+			$discountable_product = get_option('woo_products');	
+			$discountable_product_array = explode(',', $discountable_product);
+			$discountable_product_array = array_map('trim', $discountable_product_array);
 			$price_for_discount = get_option('woo_price');
 			$discount_amount = get_option('woo_discount');
 			$discount_amount = -1 * abs($discount_amount);
+			$trigger = false;
 			foreach($cartitems as $cartitem) {
 				$productid = $cartitem['product_id'];
-				if($productid == $discountable_product) {
+				if(in_array($productid, $discountable_product_array)) {
 				$item_price = get_post_meta($productid , '_price', true);
 				//Keep for upgrade
 				//$item_regular_price = get_post_meta($productid , '_regular_price', true);
 				//$item_sale_price = get_post_meta($productid , '_regular_price', true);
 				$item_price = get_post_meta($productid , '_price', true);
 					if($item_price < $price_for_discount) {
-					WC()->cart->add_fee( 'Discount', $discount_amount );
+						$trigger = true;
 					}
 				}
+			}
+			if($trigger) {
+				WC()->cart->add_fee( 'Discount', $discount_amount );
 			}
 		}	
 }
