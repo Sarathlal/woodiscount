@@ -37,7 +37,7 @@
 		   <form id="submit-data" method="post" action="options.php">
 			  <?php settings_fields('woo_discount_group'); ?>
 			  <p>
-				 <label for="woo_products">Enter Product Id to allow discount - Only 1 product Id</label><br>
+				 <label for="woo_products">Enter Product Id to allow discount</label><br>
 				 <input type="text" id="woo_products" name="woo_products" value="<?php echo get_option('woo_products'); ?>" />
 			  </p>
 			  <p>
@@ -64,15 +64,16 @@
 			$discount_amount = -1 * abs($discount_amount);
 			foreach($cartitems as $cartitem) {
 				$productid = $cartitem['product_id'];
+				if($productid == $discountable_product) {
 				$item_price = get_post_meta($productid , '_price', true);
 				//Keep for upgrade
 				//$item_regular_price = get_post_meta($productid , '_regular_price', true);
 				//$item_sale_price = get_post_meta($productid , '_regular_price', true);
-				$total_discount = 10;
 				$item_price = get_post_meta($productid , '_price', true);
 					if($item_price < $price_for_discount) {
 					WC()->cart->add_fee( 'Discount', $discount_amount );
 					}
+				}
 			}
 		}	
 }
