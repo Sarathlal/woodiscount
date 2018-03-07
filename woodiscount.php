@@ -92,6 +92,7 @@
 			global $woocommerce;
 			$cartitems = $woocommerce->cart->get_cart();
 			$discountable_product_array = get_option('woo_products');
+			if(is_array($discountable_product_array) and !empty($discountable_product_array)) {
 			$price_for_discount = get_option('woo_price');
 			$discount_amount = get_option('woo_discount');
 			$discount_amount = -1 * abs($discount_amount);
@@ -112,6 +113,8 @@
 			if($trigger) {
 				WC()->cart->add_fee( 'Discount', $discount_amount );
 			}
+			}
+			
 		}	
 }
 $WooDiscount = new WooDiscount;
