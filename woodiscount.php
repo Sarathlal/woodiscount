@@ -72,6 +72,7 @@
 					echo "</select>";
 				}    
 				?>
+				<?php wp_reset_postdata(); ?>
 			  </p>
 			  <p>
 				 <label for="woo_price">Check Price</label><br>
