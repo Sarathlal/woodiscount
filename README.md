@@ -2,14 +2,14 @@
 
 ## Installation Instructions
 
-1. Download plugin from here.
+1. Download plugin from [here].(https://github.com/Sarathlal/woodiscount/archive/master.zip)
 2. Upload to Plugin folder
 3. Activate plugin
 4. Go to settings >> Discount Settings
 5. Add Product Ids in coma seperated manner (1, 2, 3, 4 etc)
 6. Add the amount for price check
 7. Add the discount amount
-8. Save settings & You have done.
+8. Save settings & You are done.
 
 ## Changelog
 
